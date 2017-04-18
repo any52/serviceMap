@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="ru.sample2.shared.CountryEntity" table="country" schema="public" catalog="postgres">
+        <id name="id">
+            <column name="id" sql-type="integer"/>
+        </id>
+        <property name="countryname">
+            <column name="countryname" sql-type="char(50)" length="50" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>
