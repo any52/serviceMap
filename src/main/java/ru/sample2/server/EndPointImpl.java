@@ -1,13 +1,12 @@
 package ru.sample2.server;
 
 
+import ru.sample2.shared.RouteDTO;
+import ru.sample2.shared.RoutesEntity;
 import ru.sample2.shared.SuggestionDTO;
 
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 
 
 /**
@@ -18,21 +17,29 @@ import javax.ws.rs.Produces;
 public class EndPointImpl {
 
   private static final long serialVersionUID = 1L;
-  private AddressesRepository countryRepository;
+  private AddressesRepository addressesRepository;
+  private RouteRepository routeRepository;
 
   @Inject
-  public EndPointImpl(AddressesRepository countryRepository) {
+  public EndPointImpl(AddressesRepository addressesRepository, RouteRepository routeRepository) {
     super();
-    this.countryRepository = countryRepository;
+    this.addressesRepository = addressesRepository;
+    this.routeRepository = routeRepository;
   }
 
   @GET
   @Path("/{country}")
   @Produces("application/json")
-  public SuggestionDTO getCountryList(@PathParam("country") final String input)  {
+  public SuggestionDTO getAddressesList(@PathParam("country") final String input)  {
 
-    return countryRepository.getCountryList(input);
+    return addressesRepository.getAddressesList(input);
 
   }
 
+  @GET
+  @Path("/getRoute/{route}")
+//  @Consumes("application/json")
+  public RouteDTO sendRoute(@PathParam("route")RoutesEntity route){
+    return routeRepository.sendRoute(route);
+  }
 }

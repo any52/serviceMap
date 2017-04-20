@@ -5,6 +5,7 @@ import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.SimpleEventBus;
 import com.google.gwt.inject.client.AbstractGinModule;
 import ru.sample2.client.Presenter;
+import ru.sample2.client.View;
 import ru.sample2.client.model.TextModel;
 
 import javax.inject.Singleton;
@@ -19,7 +20,7 @@ public class MyGinModule extends AbstractGinModule {
 
         bind(Presenter.class).in(Singleton.class);
 
-//        bind(View.class).in(Singleton.class);
+        bind(View.class);
 
         bind(TextModel.class).in(Singleton.class);
     }

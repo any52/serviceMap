@@ -20,7 +20,7 @@ public class AddressesRepositoryFromBaseImpl implements AddressesRepository {
     private Session session;
 
     @Override
-    public SuggestionDTO getCountryList(final String streetName) {
+    public SuggestionDTO getAddressesList(final String streetName) {
         String temp = streetName.toLowerCase() + "%";
 
         SessionFactory sessions = new Configuration().configure().buildSessionFactory();

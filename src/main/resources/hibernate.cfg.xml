@@ -22,9 +22,13 @@
 
     <mapping class="ru.sample2.shared.CountryEntity"/>
     <mapping class="ru.sample2.shared.AddressEntity"/>
-    <mapping resource="ru/sample2/shared/AddressEntity.hbm.xml"/>
+    <!--<mapping resource="ru/sample2/shared/AddressEntity.hbm.xml"/>-->
     <mapping class="ru.sample2.shared.UserEntity"/>
-    <mapping resource="ru/sample2/shared/UserEntity.hbm.xml"/>
+    <!--<mapping resource="ru/sample2/shared/UserEntity.hbm.xml"/>-->
+    <!--<mapping resource="ru/sample2/shared/RoutesEntity.hbm.xml"/>-->
+    <mapping class="ru.sample2.shared.RoutesEntity"/>
+    <!--<mapping resource="ru/sample2/shared/SheduleEntity.hbm.xml"/>-->
+    <mapping class="ru.sample2.shared.SheduleEntity"/>
 
   </session-factory>
 </hibernate-configuration>

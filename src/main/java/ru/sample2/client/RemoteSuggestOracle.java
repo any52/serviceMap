@@ -2,7 +2,7 @@ package ru.sample2.client;
 
 import com.google.common.base.Function;
 import com.google.gwt.event.shared.EventBus;
-import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.SuggestOracle;
 import org.fusesource.restygwt.client.Method;
 import org.fusesource.restygwt.client.MethodCallback;
@@ -22,7 +22,7 @@ import static com.google.common.collect.Lists.transform;
  */
 public class RemoteSuggestOracle extends SuggestOracle {
     private EventBus eventBus;
-    private EndPoint countryService;
+    private EndPoint addressesService;
 
     private static final String SERVER_ERROR = "An error occurred while "
             + "attempting to contact the server. Please check your network "
@@ -30,15 +30,15 @@ public class RemoteSuggestOracle extends SuggestOracle {
 
 
     @Inject
-    public RemoteSuggestOracle( EventBus eventBus, EndPoint countryService) {
+    public RemoteSuggestOracle( EventBus eventBus, EndPoint addressesService) {
 
         this.eventBus = eventBus;
-        this.countryService = countryService;
+        this.addressesService = addressesService;
     }
 
     @Override
     public void requestSuggestions(Request request, Callback callback) {
-        countryService.getCountryList(request.getQuery(), new LoadSuggestionsCallback(callback, request));
+        addressesService.getAddressesList(request.getQuery(), new LoadSuggestionsCallback(callback, request));
 
     }
 
@@ -56,9 +56,7 @@ public class RemoteSuggestOracle extends SuggestOracle {
 
         @Override
         public void onFailure(Method method, Throwable throwable) {
-            final HTML serverResponseLabel = new HTML();
-            serverResponseLabel.addStyleName("serverResponseLabelError");
-            serverResponseLabel.setHTML(SERVER_ERROR);
+            Window.alert("Server error!");
         }
 
         @Override

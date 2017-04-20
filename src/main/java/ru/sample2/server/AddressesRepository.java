@@ -9,5 +9,6 @@ import java.io.Serializable;
  */
 public interface AddressesRepository extends Serializable {
 
-    public SuggestionDTO getCountryList( final String input);
+    public SuggestionDTO getAddressesList(final String input);
+
 }
